@@ -38,7 +38,7 @@ var requestHandler = function(request, response) {
   // console.log(request);
 
   // The outgoing status.
-  var statusCode = 200
+  var statusCode = 404;
 
   if(request.method === 'POST'){
     statusCode = 201;
@@ -49,19 +49,15 @@ var requestHandler = function(request, response) {
     });
   }else if(request.method === 'GET'){
     statusCode = 200;
-    // console.log(response);
+  } else if (request.method === "OPTIONS"){
+    statusCode = 200;
+  }else if(request.method === "DELETE"){
+    statusCode = 200;
   }
-   
-  if(request.url.indexOf('argle') !== -1){
+  if(request.url.indexOf('classes') === -1){
     statusCode = 404;
   }
 
-
-  // else if(request.method === "OPTIONS"){
-  //   statusCode = 200;
-  // }else if(request.method === "DELETE"){
-  //   statusCode = 200;
-  // }
 
 
   // See the note below about CORS headers.
